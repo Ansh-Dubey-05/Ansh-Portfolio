@@ -88,14 +88,19 @@ export default function Hero({ onOpenLightbox }) {
       {/* Main Composition Container */}
       <div className="relative max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center">
         
-        {/* GIANT CONDENSED BACKGROUND TYPOGRAPHY: "SDE" (Pulsing glowing background) */}
+        {/* GIANT CONDENSED BACKGROUND TYPOGRAPHY: "SOFTWARE DEVELOPER" */}
         <div 
           aria-hidden="true" 
-          className="absolute inset-x-0 top-1/2 -translate-y-1/2 text-center select-none pointer-events-none z-0"
+          className="absolute inset-x-0 top-1/2 -translate-y-1/2 text-center select-none pointer-events-none z-0 overflow-hidden px-2"
         >
-          <span className="block font-['Bebas_Neue',sans-serif] text-[32vw] md:text-[35vw] leading-none tracking-tighter font-black text-[#D71930]/90 select-none animate-sde-glow">
-            SDE
-          </span>
+          <div className="flex flex-col items-center justify-center leading-[0.82] tracking-tight font-black text-[#D71930]/90 select-none animate-sde-glow">
+            <span className="font-['Bebas_Neue',sans-serif] text-[15vw] sm:text-[13vw] lg:text-[11vw] block drop-shadow-[0_0_45px_rgba(215,25,48,0.45)]">
+              SOFTWARE
+            </span>
+            <span className="font-['Bebas_Neue',sans-serif] text-[15vw] sm:text-[13vw] lg:text-[11vw] block -mt-3 sm:-mt-6 drop-shadow-[0_0_45px_rgba(215,25,48,0.45)]">
+              DEVELOPER
+            </span>
+          </div>
         </div>
 
         {/* 3-Column Hero Grid: Left Content / Center-Right Portrait / Right Stats */}
@@ -283,11 +288,11 @@ export default function Hero({ onOpenLightbox }) {
                   key={idx} 
                   className="group border-l-2 border-[#D71930]/40 hover:border-[#D71930] pl-4 transition-all duration-300 hover:translate-x-1"
                 >
-                  <div className="flex items-baseline gap-1">
-                    <span className="font-['Bebas_Neue',sans-serif] text-4xl sm:text-5xl text-white tracking-wider group-hover:text-[#D71930] transition-colors">
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-['Bebas_Neue',sans-serif] text-3xl sm:text-4xl xl:text-5xl text-white tracking-wider group-hover:text-[#D71930] transition-colors">
                       {stat.value}
                     </span>
-                    <span className="text-[#D71930] font-black text-xl">+</span>
+                    <span className="text-[#D71930] font-black text-sm sm:text-base">✦</span>
                   </div>
                   <div className="text-xs font-mono uppercase tracking-wider text-white font-semibold">
                     {stat.label}
