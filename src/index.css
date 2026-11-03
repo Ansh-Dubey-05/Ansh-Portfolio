@@ -111,15 +111,6 @@
   }
 }
 
-@keyframes pulseLine {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(300%);
-  }
-}
-
 .animate-float {
   animation: floatSlow 5s ease-in-out infinite;
 }
@@ -141,28 +132,35 @@
   animation: borderRotate 4s ease infinite;
 }
 
-/* Dynamic Font Switcher Overrides */
+/* ========================================================= */
+/* DYNAMIC TYPOGRAPHY OVERRIDES ACROSS THE WHOLE PAGE        */
+/* ========================================================= */
+body.font-cyberpunk, 
+body.font-cyberpunk * {
+  --font-display: 'Orbitron', sans-serif !important;
+}
 body.font-cyberpunk h1, 
 body.font-cyberpunk h2, 
-body.font-cyberpunk .font-\[\'Bebas_Neue\'\,sans-serif\] {
+body.font-cyberpunk [class*="Bebas"] {
   font-family: 'Orbitron', sans-serif !important;
-  letter-spacing: 0.02em !important;
+  letter-spacing: 0.04em !important;
 }
 body.font-cyberpunk h3, 
 body.font-cyberpunk h4, 
-body.font-cyberpunk .font-\[\'Syne\'\,sans-serif\] {
+body.font-cyberpunk [class*="Syne"] {
   font-family: 'Space Grotesk', sans-serif !important;
 }
 
 body.font-modern h1, 
 body.font-modern h2, 
-body.font-modern .font-\[\'Bebas_Neue\'\,sans-serif\] {
+body.font-modern [class*="Bebas"] {
   font-family: 'Outfit', sans-serif !important;
   font-weight: 900 !important;
+  letter-spacing: -0.02em !important;
 }
 body.font-modern h3, 
 body.font-modern h4, 
-body.font-modern .font-\[\'Syne\'\,sans-serif\] {
+body.font-modern [class*="Syne"] {
   font-family: 'Inter', sans-serif !important;
 }
 
@@ -170,7 +168,73 @@ body.font-terminal h1,
 body.font-terminal h2, 
 body.font-terminal h3, 
 body.font-terminal h4,
-body.font-terminal .font-\[\'Bebas_Neue\'\,sans-serif\], 
-body.font-terminal .font-\[\'Syne\'\,sans-serif\] {
+body.font-terminal [class*="Bebas"], 
+body.font-terminal [class*="Syne"] {
   font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* ========================================================= */
+/* DYNAMIC ACCENT COLOR THEMES ACROSS THE WHOLE PAGE         */
+/* ========================================================= */
+[data-theme="cyan"] .bg-\[\#D71930\],
+[data-theme="cyan"] .hover\:bg-\[\#D71930\]:hover,
+[data-theme="cyan"] [class*="bg-[#D71930]"] {
+  background-color: #00F0FF !important;
+  color: #050505 !important;
+}
+[data-theme="cyan"] .text-\[\#D71930\],
+[data-theme="cyan"] .hover\:text-\[\#D71930\]:hover,
+[data-theme="cyan"] [class*="text-[#D71930]"] {
+  color: #00F0FF !important;
+}
+[data-theme="cyan"] .border-\[\#D71930\],
+[data-theme="cyan"] .hover\:border-\[\#D71930\]:hover,
+[data-theme="cyan"] [class*="border-[#D71930]"] {
+  border-color: #00F0FF !important;
+}
+[data-theme="cyan"] .animate-sde-glow {
+  color: #00F0FF !important;
+  filter: drop-shadow(0 0 35px rgba(0, 240, 255, 0.7)) !important;
+}
+
+[data-theme="emerald"] .bg-\[\#D71930\],
+[data-theme="emerald"] .hover\:bg-\[\#D71930\]:hover,
+[data-theme="emerald"] [class*="bg-[#D71930]"] {
+  background-color: #10B981 !important;
+  color: #ffffff !important;
+}
+[data-theme="emerald"] .text-\[\#D71930\],
+[data-theme="emerald"] .hover\:text-\[\#D71930\]:hover,
+[data-theme="emerald"] [class*="text-[#D71930]"] {
+  color: #10B981 !important;
+}
+[data-theme="emerald"] .border-\[\#D71930\],
+[data-theme="emerald"] .hover\:border-\[\#D71930\]:hover,
+[data-theme="emerald"] [class*="border-[#D71930]"] {
+  border-color: #10B981 !important;
+}
+[data-theme="emerald"] .animate-sde-glow {
+  color: #10B981 !important;
+  filter: drop-shadow(0 0 35px rgba(16, 185, 129, 0.7)) !important;
+}
+
+[data-theme="gold"] .bg-\[\#D71930\],
+[data-theme="gold"] .hover\:bg-\[\#D71930\]:hover,
+[data-theme="gold"] [class*="bg-[#D71930]"] {
+  background-color: #F59E0B !important;
+  color: #050505 !important;
+}
+[data-theme="gold"] .text-\[\#D71930\],
+[data-theme="gold"] .hover\:text-\[\#D71930\]:hover,
+[data-theme="gold"] [class*="text-[#D71930]"] {
+  color: #F59E0B !important;
+}
+[data-theme="gold"] .border-\[\#D71930\],
+[data-theme="gold"] .hover\:border-\[\#D71930\]:hover,
+[data-theme="gold"] [class*="border-[#D71930]"] {
+  border-color: #F59E0B !important;
+}
+[data-theme="gold"] .animate-sde-glow {
+  color: #F59E0B !important;
+  filter: drop-shadow(0 0 35px rgba(245, 158, 11, 0.7)) !important;
 }

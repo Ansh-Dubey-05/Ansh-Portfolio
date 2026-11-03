@@ -99,23 +99,23 @@ export default function Hero({ onOpenLightbox }) {
       {/* Main Composition Container */}
       <div className="relative max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center">
         
-        {/* GIANT CONDENSED BACKDROP TYPOGRAPHY: "SOFTWARE DEVELOPER" - Positioned High & Prominent */}
+        {/* GIANT CONDENSED BACKDROP TYPOGRAPHY: "SOFTWARE DEVELOPER" - Positioned High & Distinct (No Overlap) */}
         <div 
           aria-hidden="true" 
-          className="absolute inset-x-0 top-12 sm:top-16 lg:top-20 text-center select-none pointer-events-none z-0 overflow-hidden px-2 sm:px-6"
+          className="absolute inset-x-0 top-0 sm:top-2 lg:top-4 text-center select-none pointer-events-none z-0 overflow-hidden px-2 sm:px-4"
         >
-          <div className="flex flex-col lg:flex-row items-center justify-center font-['Bebas_Neue',sans-serif] text-[16vw] sm:text-[14vw] lg:text-[11.2vw] text-[#D71930] leading-[0.85] lg:leading-none tracking-tight font-black select-none animate-sde-glow">
-            <span className="block drop-shadow-[0_0_45px_rgba(215,25,48,0.55)]">
+          <div className="flex flex-col lg:flex-row items-center justify-center font-['Bebas_Neue',sans-serif] text-[14vw] sm:text-[12.5vw] lg:text-[9.8vw] text-[#D71930] leading-[0.85] lg:leading-none tracking-tight font-black select-none animate-sde-glow">
+            <span className="block drop-shadow-[0_0_35px_rgba(215,25,48,0.5)]">
               SOFTWARE
             </span>
-            <span className="block lg:ml-6 drop-shadow-[0_0_45px_rgba(215,25,48,0.55)]">
+            <span className="block lg:ml-6 drop-shadow-[0_0_35px_rgba(215,25,48,0.5)]">
               DEVELOPER
             </span>
           </div>
         </div>
 
-        {/* 3-Column Hero Grid: Left Content / Center-Right Portrait / Right Stats */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center pt-8 lg:pt-12">
+        {/* 3-Column Hero Grid: Left Content / Center-Right Portrait / Right Stats - Positioned Comfortably Below Backdrop (Zero Overlap) */}
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center pt-24 sm:pt-32 lg:pt-36 xl:pt-40">
           
           {/* LEFT COLUMN: Identity, Animated Title, Actions (Col 1-5) */}
           <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1">

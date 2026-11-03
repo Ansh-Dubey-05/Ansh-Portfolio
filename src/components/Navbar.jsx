@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { Menu, X, Download, Sparkles, ExternalLink, ArrowRight, Cpu } from 'lucide-react';
+import { Menu, X, Download, Sparkles, ExternalLink, ArrowRight, Cpu, Palette } from 'lucide-react';
 import { WhatsappIcon } from './Icons';
 import confetti from 'canvas-confetti';
 
@@ -42,6 +42,10 @@ export default function Navbar() {
     });
   };
 
+  const handleOpenThemeCustomizer = () => {
+    window.dispatchEvent(new CustomEvent('open-theme-customizer'));
+  };
+
   const navLinks = [
     { label: 'JARVIS Mind', href: '#neural-mind', isJarvis: true },
     { label: 'Projects', href: '#projects' },
@@ -56,7 +60,7 @@ export default function Navbar() {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-[#050505]/90 backdrop-blur-md border-b border-white/10 shadow-2xl py-3.5' 
+          ? 'bg-[#050505]/95 backdrop-blur-md border-b border-white/10 shadow-2xl py-3.5' 
           : 'bg-transparent py-5'
       }`}
     >
@@ -79,7 +83,7 @@ export default function Navbar() {
         </a>
 
         {/* Center Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 px-3 py-1.5 rounded-full bg-[#0d0d0d]/80 border border-white/10 backdrop-blur-md">
+        <nav className="hidden xl:flex items-center gap-1 xl:gap-2 px-3 py-1.5 rounded-full bg-[#0d0d0d]/80 border border-white/10 backdrop-blur-md">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -98,8 +102,20 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Right Action: WhatsApp & Resume */}
-        <div className="hidden md:flex items-center gap-2.5">
+        {/* Right Action Bar: Theme Studio, WhatsApp, Resume */}
+        <div className="hidden md:flex items-center gap-2">
+          
+          {/* THEME & FONTS BUTTON (Prominent & Highly Visible) */}
+          <button
+            onClick={handleOpenThemeCustomizer}
+            className="flex items-center gap-1.5 px-3 py-2 rounded-md bg-white/10 hover:bg-[#D71930] border border-white/15 hover:border-[#D71930] text-white text-xs font-mono font-semibold tracking-wider transition-all duration-200 shadow-md cursor-pointer group"
+            title="Open Theme & Fonts Customizer"
+          >
+            <Palette className="w-3.5 h-3.5 text-amber-400 group-hover:rotate-45 transition-transform" />
+            <span>THEME & FONTS</span>
+          </button>
+
+          {/* WhatsApp Button */}
           <a
             href={PERSONAL_INFO.whatsapp}
             target="_blank"
@@ -111,6 +127,7 @@ export default function Navbar() {
             <span>WHATSAPP</span>
           </a>
 
+          {/* Resume Download */}
           <a
             href={PERSONAL_INFO.resumePath}
             download="Ansh_Dubey_Resume.pdf"
@@ -124,6 +141,15 @@ export default function Navbar() {
 
         {/* Mobile Action Buttons */}
         <div className="flex md:hidden items-center gap-2">
+          <button
+            onClick={handleOpenThemeCustomizer}
+            className="p-2 rounded bg-white/10 text-white text-xs border border-white/15"
+            aria-label="Theme & Fonts"
+            title="Theme & Fonts"
+          >
+            <Palette className="w-4 h-4 text-amber-400" />
+          </button>
+
           <a
             href={PERSONAL_INFO.whatsapp}
             target="_blank"
@@ -158,6 +184,19 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#0a0a0a]/98 border-b border-white/10 px-5 pt-3 pb-6 backdrop-blur-2xl animate-in slide-in-from-top-4 duration-200">
           <div className="flex flex-col gap-2 pt-2">
+            
+            {/* Quick Theme Trigger inside Mobile Drawer */}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                handleOpenThemeCustomizer();
+              }}
+              className="w-full py-2.5 px-4 rounded-lg bg-gradient-to-r from-amber-500/20 to-[#D71930]/20 border border-amber-500/30 text-white text-xs font-mono font-bold flex items-center justify-center gap-2 mb-2"
+            >
+              <Palette className="w-4 h-4 text-amber-400" />
+              <span>CUSTOMIZE THEME & FONTS (LIVE STUDIO)</span>
+            </button>
+
             {navLinks.map((link) => (
               <a
                 key={link.label}
