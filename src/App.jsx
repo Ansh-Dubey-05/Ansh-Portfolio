@@ -1,0 +1,80 @@
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Projects from './components/Projects';
+import ProjectModal from './components/ProjectModal';
+import Experience from './components/Experience';
+import WorkProcess from './components/WorkProcess';
+import EducationSkills from './components/EducationSkills';
+import PresidentFeature from './components/PresidentFeature';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import PhotoLightbox from './components/PhotoLightbox';
+import CustomCursor from './components/CustomCursor';
+
+export default function App() {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [lightboxData, setLightboxData] = useState({ isOpen: false, src: '', caption: '' });
+
+  const handleOpenLightbox = (src, caption) => {
+    setLightboxData({ isOpen: true, src, caption });
+  };
+
+  const handleCloseLightbox = () => {
+    setLightboxData({ isOpen: false, src: '', caption: '' });
+  };
+
+  return (
+    <div className="min-h-screen bg-[#050505] text-[#e5e5e5] selection:bg-[#D71930] selection:text-white font-['Plus_Jakarta_Sans',sans-serif] relative overflow-x-hidden">
+      {/* Custom Trailing Glow Cursor for Desktop */}
+      <CustomCursor />
+
+      {/* Navigation */}
+      <Navbar />
+
+      {/* Main Content */}
+      <main>
+        {/* Hero Section with Giant PORTFOLIO typography and Ansh Dubey portrait */}
+        <Hero onOpenLightbox={handleOpenLightbox} />
+
+        {/* Selected Projects Showcase (Matching 3-column reference + Deep dive specs) */}
+        <Projects onSelectProject={(project) => setSelectedProject(project)} />
+
+        {/* Professional Experience (Career progression: SDE Intern ➔ Full-time SDE at CONORG) */}
+        <Experience />
+
+        {/* Work Process (Vertical 5-Step timeline + Crimson Quote Card) */}
+        <WorkProcess />
+
+        {/* Education & Technical Skills (Split layout matching reference + Verified Certificates) */}
+        <EducationSkills onOpenLightbox={handleOpenLightbox} />
+
+        {/* College President & Institutional Leadership Spotlight (SVPC Diploma CSE featuring 5th photo) */}
+        <PresidentFeature onOpenLightbox={handleOpenLightbox} />
+
+        {/* Contact & 3D Laptop Workspace Showcase */}
+        <Contact />
+      </main>
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Interactive Project Architecture Modal */}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
+
+      {/* Archival Photo Lightbox Modal */}
+      {lightboxData.isOpen && (
+        <PhotoLightbox
+          imageSrc={lightboxData.src}
+          caption={lightboxData.caption}
+          onClose={handleCloseLightbox}
+        />
+      )}
+    </div>
+  );
+}

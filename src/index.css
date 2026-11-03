@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-cursive: 'Caveat', cursive;
+  --font-heading: 'Syne', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --color-crimson: #D71930;
+  --color-crimson-dark: #8F0E1E;
+  --color-crimson-light: #FF2E47;
+  --color-dark-bg: #050505;
+  --color-dark-card: #0c0c0c;
+  --color-dark-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D71930;
+}
+
+/* Custom subtle grid background */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+.bg-dot-pattern {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(215, 25, 48, 0.15) 1px, transparent 1px);
+}
+
+/* Glowing text and boxes */
+.glow-red {
+  box-shadow: 0 0 45px -5px rgba(215, 25, 48, 0.45);
+}
+
+.glow-red-sm {
+  box-shadow: 0 0 20px -3px rgba(215, 25, 48, 0.35);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 35px rgba(215, 25, 48, 0.7);
+}
+
+/* Keyframe Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+    filter: drop-shadow(0 0 30px rgba(215, 25, 48, 0.4));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 60px rgba(215, 25, 48, 0.7));
+  }
+}
+
+@keyframes redSparkle {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(180deg);
+  }
+}
+
+@keyframes borderRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulseLine {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(300%);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-float-badge {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.animate-sde-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: redSparkle 3s ease-in-out infinite;
+}
+
+.animate-shimmer-border {
+  background-size: 200% 200%;
+  animation: borderRotate 4s ease infinite;
+}
