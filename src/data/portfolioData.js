@@ -91,12 +91,12 @@ export const CAREER_PROGRESSION = [
 export const OTHER_INTERNSHIPS = [
   {
     organization: "Department of Technical Education, Govt. of Madhya Pradesh (World Bank Aided)",
-    role: "Management Executive & Procurement Official — PAISA Project",
+    role: "Management Executive & Procurement Official — PESA Project",
     period: "6 Months (2024)",
     honorarium: "Stipend: ₹1,00,000",
-    badge: "World Bank & Global Skills Park Project",
+    badge: "World Bank & Global Skills Park Project (PESA)",
     details: [
-      "Led procurement processes and administrative executive workflows for the high-impact PAISA Project under the Department of Technical Education, MP.",
+      "Led procurement processes and administrative executive workflows for the high-impact PESA Project under the Department of Technical Education, MP.",
       "Facilitated and coordinated specialized technical skills training for over 2,000+ students across Madhya Pradesh.",
       "Spearheaded operational activities at the central Incubation Center hosted at Government Women's Polytechnic College (GWPC), Bhopal.",
       "Maintained institutional inventory, vendor agreements, technical documentation, and World Bank compliance reports."
@@ -631,13 +631,13 @@ export const JARVIS_NEURAL_NODES = [
     tags: ["AX Framework", "Virtual Tours", "Conservation PMU", "Heritage Digitisation"]
   },
   {
-    id: "paisa",
-    name: "PAISA World Bank PMU",
+    id: "pesa",
+    name: "PESA World Bank PMU",
     type: "GOVT_PROCUREMENT",
     status: "COMPLETED",
     metric: "2,000+ TRAINED",
     color: "#38bdf8",
-    summary: "Led procurement & operations for the PAISA Project under Dept. of Technical Education, MP. Facilitated training for 2000+ students at GWPC Incubation Center.",
+    summary: "Led procurement & operations for the PESA Project under Dept. of Technical Education, MP. Facilitated training for 2000+ students at GWPC Incubation Center.",
     tags: ["World Bank", "Global Skills Park", "Procurement Official", "₹1L Stipend"]
   },
   {
