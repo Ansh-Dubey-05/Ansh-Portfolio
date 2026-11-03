@@ -230,12 +230,6 @@ export default function Hero({ onOpenLightbox }) {
                 <span className="font-bold">Full-Time SDE</span>
               </div>
 
-              {/* Floating Badge (Bottom-Left) */}
-              <div className="absolute -bottom-3 -left-3 z-30 px-3 py-1.5 rounded-full bg-[#0d0d0d]/95 border border-amber-500/50 text-amber-300 text-[11px] font-mono shadow-xl backdrop-blur-md flex items-center gap-1.5 animate-float-badge">
-                <Crown className="w-3.5 h-3.5 text-amber-400" />
-                <span className="font-bold">College President</span>
-              </div>
-
               {/* Portrait Frame Container: Seamless for Cutout, Bordered for Photos */}
               <div 
                 className={`relative z-10 overflow-hidden transition-all duration-500 w-full flex items-center justify-center ${
@@ -274,8 +268,21 @@ export default function Hero({ onOpenLightbox }) {
                 </button>
               </div>
 
+              {/* Centered Institutional Leadership Badge (Below Photo, Centered & Clean) */}
+              <div className="mt-3 flex items-center justify-center z-20">
+                <a
+                  href="#leadership"
+                  className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0c0c0c]/95 hover:bg-[#181818] border border-amber-500/50 hover:border-amber-400 text-amber-300 hover:text-white text-xs font-mono shadow-xl backdrop-blur-md transition-all group/badge"
+                  title="View College President Tenure & IAS Nagargoje Felicitation"
+                >
+                  <Crown className="w-3.5 h-3.5 text-amber-400 group-hover/badge:scale-110 transition-transform" />
+                  <span className="font-bold tracking-wide">College President • SVPC Bhopal</span>
+                  <span className="text-[10px] text-amber-400/70 border-l border-white/10 pl-2">2023–24</span>
+                </a>
+              </div>
+
               {/* Interactive Portrait Switcher Pills */}
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5 p-1 rounded-full bg-[#111111] border border-white/10 z-20 shadow-lg">
+              <div className="mt-2.5 flex flex-wrap items-center justify-center gap-1.5 p-1 rounded-full bg-[#111111] border border-white/10 z-20 shadow-lg">
                 {PORTRAITS.map((p, idx) => (
                   <button
                     key={p.id}
