@@ -79,12 +79,12 @@ export default function Navbar() {
         </a>
 
         {/* Center Desktop Navigation */}
-        <nav className="hidden xl:flex items-center gap-1 xl:gap-2 px-3.5 py-1.5 rounded-full bg-[#0d0d0d]/80 border border-white/10 backdrop-blur-md">
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 px-3.5 py-1.5 rounded-full bg-[#0d0d0d]/80 border border-white/10 backdrop-blur-md">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className={`px-3 py-1 rounded-full text-xs font-mono tracking-wider transition-all duration-200 flex items-center gap-1.5 ${
+              className={`px-2.5 xl:px-3 py-1 rounded-full text-xs font-mono tracking-wider transition-all duration-200 flex items-center gap-1.5 ${
                 activeSection === link.href.replace('#', '')
                   ? 'bg-[#D71930] text-white font-semibold shadow-md shadow-[#D71930]/30'
                   : link.isJarvis
@@ -99,13 +99,13 @@ export default function Navbar() {
         </nav>
 
         {/* Right Action Bar: Clean & Focused (WhatsApp & Resume) */}
-        <div className="hidden md:flex items-center gap-2.5">
+        <div className="hidden lg:flex items-center gap-2.5">
           {/* WhatsApp Button */}
           <a
             href={PERSONAL_INFO.whatsapp}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-md bg-emerald-600/20 hover:bg-emerald-600 border border-emerald-500/30 text-emerald-400 hover:text-white text-xs font-mono font-semibold tracking-wider transition-all duration-200"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-md bg-emerald-600/20 hover:bg-emerald-600 border border-emerald-500/30 text-emerald-400 hover:text-white text-xs font-mono font-semibold tracking-wider transition-all duration-200"
             title="Chat on WhatsApp (9755319058)"
           >
             <WhatsappIcon className="w-3.5 h-3.5" />
@@ -117,7 +117,7 @@ export default function Navbar() {
             href={PERSONAL_INFO.resumePath}
             download="Ansh_Dubey_Resume.pdf"
             onClick={handleResumeDownload}
-            className="flex items-center gap-2 px-4 py-2 rounded-md bg-[#D71930] hover:bg-[#b51426] text-white text-xs font-mono font-semibold tracking-wider transition-all duration-200 shadow-lg shadow-[#D71930]/20 hover:shadow-[#D71930]/40 group"
+            className="flex items-center gap-2 px-3.5 py-2 rounded-md bg-[#D71930] hover:bg-[#b51426] text-white text-xs font-mono font-semibold tracking-wider transition-all duration-200 shadow-lg shadow-[#D71930]/20 hover:shadow-[#D71930]/40 group"
           >
             <Download className="w-3.5 h-3.5 transition-transform group-hover:translate-y-0.5" />
             <span>RESUME</span>
@@ -125,7 +125,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Action Buttons */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-2">
           <a
             href={PERSONAL_INFO.whatsapp}
             target="_blank"
@@ -158,7 +158,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0a0a0a]/98 border-b border-white/10 px-5 pt-3 pb-6 backdrop-blur-2xl animate-in slide-in-from-top-4 duration-200">
+        <div className="lg:hidden bg-[#0a0a0a]/98 border-b border-white/10 px-5 pt-3 pb-6 backdrop-blur-2xl animate-in slide-in-from-top-4 duration-200">
           <div className="flex flex-col gap-2 pt-2">
             {navLinks.map((link) => (
               <a

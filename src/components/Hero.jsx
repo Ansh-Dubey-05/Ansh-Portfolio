@@ -100,9 +100,9 @@ export default function Hero({ onOpenLightbox }) {
         {/* GIANT CONDENSED BACKDROP TYPOGRAPHY: "SOFTWARE DEVELOPER" - Single Line, Perfectly Fitted Across Margin to Margin */}
         <div 
           aria-hidden="true" 
-          className="absolute inset-x-0 top-1 sm:top-2 lg:top-4 text-center select-none pointer-events-none z-0 overflow-hidden px-4 sm:px-6 w-full flex items-center justify-center"
+          className="absolute inset-x-0 top-1 sm:top-2 lg:top-4 text-center select-none pointer-events-none z-0 overflow-visible px-2 sm:px-4 w-full flex items-center justify-center"
         >
-          <div className="font-['Bebas_Neue',sans-serif] text-[6.5vw] sm:text-[6.2vw] md:text-[5.8vw] lg:text-[5.5vw] xl:text-[5.2vw] text-[#D71930] leading-none tracking-tight sm:tracking-normal font-black select-none animate-sde-glow whitespace-nowrap drop-shadow-[0_0_35px_rgba(215,25,48,0.5)]">
+          <div className="hero-backdrop-sde font-['Bebas_Neue',sans-serif] text-[5.8vw] sm:text-[5.4vw] md:text-[5vw] lg:text-[4.6vw] xl:text-[4.2vw] text-[#D71930] leading-none tracking-normal font-black select-none animate-sde-glow whitespace-nowrap drop-shadow-[0_0_35px_rgba(215,25,48,0.5)]">
             SOFTWARE DEVELOPER
           </div>
         </div>

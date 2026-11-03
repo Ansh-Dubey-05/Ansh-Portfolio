@@ -150,6 +150,11 @@ body.font-cyberpunk h4,
 body.font-cyberpunk [class*="Syne"] {
   font-family: 'Space Grotesk', sans-serif !important;
 }
+body.font-cyberpunk .hero-backdrop-sde {
+  font-family: 'Orbitron', sans-serif !important;
+  font-size: clamp(1.1rem, 3.8vw, 3.2rem) !important;
+  letter-spacing: 0.02em !important;
+}
 
 body.font-modern h1, 
 body.font-modern h2, 
@@ -163,6 +168,11 @@ body.font-modern h4,
 body.font-modern [class*="Syne"] {
   font-family: 'Inter', sans-serif !important;
 }
+body.font-modern .hero-backdrop-sde {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: clamp(1.3rem, 4.4vw, 3.8rem) !important;
+  letter-spacing: -0.01em !important;
+}
 
 body.font-terminal h1, 
 body.font-terminal h2, 
@@ -171,6 +181,11 @@ body.font-terminal h4,
 body.font-terminal [class*="Bebas"], 
 body.font-terminal [class*="Syne"] {
   font-family: 'JetBrains Mono', monospace !important;
+}
+body.font-terminal .hero-backdrop-sde {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: clamp(1.0rem, 3.2vw, 2.8rem) !important;
+  letter-spacing: 0em !important;
 }
 
 /* ========================================================= */
