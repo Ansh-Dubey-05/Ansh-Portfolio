@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO, VERIFIED_STATS } from '../data/portfolioData';
-import { ArrowDownRight, Sparkles, Download, ArrowRight, ShieldCheck, Mail, Award, Check, Crown, Terminal } from 'lucide-react';
+import { ArrowDownRight, Sparkles, Download, ArrowRight, ShieldCheck, Mail, Award, Check, Crown, Terminal, Maximize2, Image as ImageIcon } from 'lucide-react';
 import { WhatsappIcon } from './Icons';
 import confetti from 'canvas-confetti';
 
 const PORTRAITS = [
   { 
+    id: 'cutout', 
+    label: 'Dark Cutout (Black Shirt)', 
+    src: '/assets/ansh_hero_transparent.png', 
+    raw: '/assets/ansh_portrait_couch.jpg',
+    isCutout: true,
+    tag: 'SDE @ CONORG'
+  },
+  { 
     id: 'couch', 
-    label: 'Modern SDE (Black Shirt)', 
+    label: 'Full Studio Photo', 
     src: '/assets/ansh_hero_full_visible.jpg', 
     raw: '/assets/ansh_portrait_couch.jpg',
+    isCutout: false,
     tag: 'SDE @ CONORG'
   },
   { 
@@ -17,6 +26,7 @@ const PORTRAITS = [
     label: 'Formal Suit (SVPC)', 
     src: '/assets/ansh_award.jpg', 
     raw: '/assets/ansh_award.jpg',
+    isCutout: false,
     tag: 'Academic Distinction'
   },
   { 
@@ -24,6 +34,7 @@ const PORTRAITS = [
     label: 'Casual Lounge', 
     src: '/assets/ansh_portrait_lounge.jpg', 
     raw: '/assets/ansh_portrait_lounge.jpg',
+    isCutout: false,
     tag: 'Software Engineer'
   },
 ];
@@ -88,23 +99,23 @@ export default function Hero({ onOpenLightbox }) {
       {/* Main Composition Container */}
       <div className="relative max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center">
         
-        {/* GIANT CONDENSED BACKGROUND TYPOGRAPHY: "SOFTWARE DEVELOPER" */}
+        {/* GIANT CONDENSED BACKDROP TYPOGRAPHY: "SOFTWARE DEVELOPER" - Positioned High & Prominent */}
         <div 
           aria-hidden="true" 
-          className="absolute inset-x-0 top-1/2 -translate-y-1/2 text-center select-none pointer-events-none z-0 overflow-hidden px-2"
+          className="absolute inset-x-0 top-12 sm:top-16 lg:top-20 text-center select-none pointer-events-none z-0 overflow-hidden px-2 sm:px-6"
         >
-          <div className="flex flex-col items-center justify-center leading-[0.82] tracking-tight font-black text-[#D71930]/90 select-none animate-sde-glow">
-            <span className="font-['Bebas_Neue',sans-serif] text-[15vw] sm:text-[13vw] lg:text-[11vw] block drop-shadow-[0_0_45px_rgba(215,25,48,0.45)]">
+          <div className="flex flex-col lg:flex-row items-center justify-center font-['Bebas_Neue',sans-serif] text-[16vw] sm:text-[14vw] lg:text-[11.2vw] text-[#D71930] leading-[0.85] lg:leading-none tracking-tight font-black select-none animate-sde-glow">
+            <span className="block drop-shadow-[0_0_45px_rgba(215,25,48,0.55)]">
               SOFTWARE
             </span>
-            <span className="font-['Bebas_Neue',sans-serif] text-[15vw] sm:text-[13vw] lg:text-[11vw] block -mt-3 sm:-mt-6 drop-shadow-[0_0_45px_rgba(215,25,48,0.45)]">
+            <span className="block lg:ml-6 drop-shadow-[0_0_45px_rgba(215,25,48,0.55)]">
               DEVELOPER
             </span>
           </div>
         </div>
 
         {/* 3-Column Hero Grid: Left Content / Center-Right Portrait / Right Stats */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center pt-4 lg:pt-0">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center pt-8 lg:pt-12">
           
           {/* LEFT COLUMN: Identity, Animated Title, Actions (Col 1-5) */}
           <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1">
@@ -208,7 +219,7 @@ export default function Hero({ onOpenLightbox }) {
           <div className="lg:col-span-4 flex justify-center items-center order-1 lg:order-2 relative mt-4 lg:mt-0">
             
             {/* Glowing Backlight Aura */}
-            <div className="absolute inset-0 bg-radial from-[#D71930]/30 via-[#D71930]/10 to-transparent blur-3xl transform scale-110 pointer-events-none animate-pulse" />
+            <div className="absolute inset-0 bg-radial from-[#D71930]/35 via-[#D71930]/15 to-transparent blur-3xl transform scale-110 pointer-events-none animate-pulse" />
 
             {/* Floating Portrait Container with animate-float */}
             <div className="relative group max-w-[360px] sm:max-w-[400px] lg:max-w-[420px] w-full flex flex-col items-center animate-float">
@@ -225,39 +236,51 @@ export default function Hero({ onOpenLightbox }) {
                 <span className="font-bold">College President</span>
               </div>
 
-              {/* Main Full-Visibility Image Frame */}
-              <div className="relative z-10 overflow-hidden rounded-2xl border-2 border-white/15 hover:border-[#D71930]/80 bg-[#0d0d0d] shadow-[0_20px_50px_rgba(0,0,0,0.9)] hover:shadow-[0_0_50px_rgba(215,25,48,0.35)] transition-all duration-500 w-full">
-                
-                {/* Fully visible, crystal-clear, high-contrast image */}
+              {/* Portrait Frame Container: Seamless for Cutout, Bordered for Photos */}
+              <div 
+                className={`relative z-10 overflow-hidden transition-all duration-500 w-full flex items-center justify-center ${
+                  currentPortrait.isCutout
+                    ? 'rounded-2xl bg-gradient-to-t from-black via-transparent to-transparent drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]'
+                    : 'rounded-2xl border-2 border-white/15 hover:border-[#D71930]/80 bg-[#0d0d0d] shadow-[0_20px_50px_rgba(0,0,0,0.9)]'
+                }`}
+              >
+                {/* Photo or Cutout */}
                 <img
                   src={currentPortrait.src}
                   alt="Ansh Dubey — Software Development Engineer"
-                  className="w-full h-auto object-cover max-h-[540px] filter contrast-105 brightness-105 transition-transform duration-750 group-hover:scale-[1.03]"
+                  className={`w-full h-auto object-contain max-h-[540px] filter contrast-105 brightness-105 transition-transform duration-750 group-hover:scale-[1.02] ${
+                    currentPortrait.isCutout ? 'drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]' : ''
+                  }`}
                 />
 
-                {/* Subtle corner golden-crimson markers */}
-                <div className="absolute top-2.5 left-2.5 w-4 h-4 border-t-2 border-l-2 border-[#D71930] pointer-events-none" />
-                <div className="absolute top-2.5 right-2.5 w-4 h-4 border-t-2 border-r-2 border-[#D71930] pointer-events-none" />
-                <div className="absolute bottom-2.5 left-2.5 w-4 h-4 border-b-2 border-l-2 border-[#D71930] pointer-events-none" />
-                <div className="absolute bottom-2.5 right-2.5 w-4 h-4 border-b-2 border-r-2 border-[#D71930] pointer-events-none" />
+                {/* Corner Crosshairs for Framed Photos */}
+                {!currentPortrait.isCutout && (
+                  <>
+                    <div className="absolute top-2.5 left-2.5 w-4 h-4 border-t-2 border-l-2 border-[#D71930] pointer-events-none" />
+                    <div className="absolute top-2.5 right-2.5 w-4 h-4 border-t-2 border-r-2 border-[#D71930] pointer-events-none" />
+                    <div className="absolute bottom-2.5 left-2.5 w-4 h-4 border-b-2 border-l-2 border-[#D71930] pointer-events-none" />
+                    <div className="absolute bottom-2.5 right-2.5 w-4 h-4 border-b-2 border-r-2 border-[#D71930] pointer-events-none" />
+                  </>
+                )}
 
                 {/* Quick Expand Button on Image */}
                 <button
                   onClick={() => onOpenLightbox && onOpenLightbox(currentPortrait.raw, 'Ansh Dubey — Software Development Engineer')}
-                  className="absolute bottom-3 right-3 z-20 px-2.5 py-1 rounded bg-black/80 hover:bg-[#D71930] border border-white/20 text-white text-[10px] font-mono transition-colors flex items-center gap-1 shadow-md"
-                  title="Inspect Full Image"
+                  className="absolute bottom-3 right-3 z-20 px-2.5 py-1 rounded-full bg-black/80 hover:bg-[#D71930] border border-white/20 text-white text-[10px] font-mono transition-colors flex items-center gap-1 shadow-md cursor-pointer backdrop-blur-md"
+                  title="Inspect Full Resolution Image"
                 >
+                  <Maximize2 className="w-3 h-3" />
                   <span>Full HD View</span>
                 </button>
               </div>
 
               {/* Interactive Portrait Switcher Pills */}
-              <div className="mt-4 flex items-center gap-1.5 p-1 rounded-full bg-[#111111] border border-white/10 z-20 shadow-lg">
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5 p-1 rounded-full bg-[#111111] border border-white/10 z-20 shadow-lg">
                 {PORTRAITS.map((p, idx) => (
                   <button
                     key={p.id}
                     onClick={() => setActivePortraitIndex(idx)}
-                    className={`px-3 py-1 rounded-full text-[10px] font-mono transition-all ${
+                    className={`px-3 py-1 rounded-full text-[10px] font-mono transition-all cursor-pointer ${
                       activePortraitIndex === idx
                         ? 'bg-[#D71930] text-white font-bold shadow-md shadow-[#D71930]/40'
                         : 'text-[#888888] hover:text-white'
