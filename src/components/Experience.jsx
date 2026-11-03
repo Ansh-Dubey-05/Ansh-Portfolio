@@ -5,8 +5,8 @@ import { Briefcase, ArrowRight, ShieldCheck, FileText, ChevronDown, ChevronUp, C
 export default function Experience({ onOpenLightbox }) {
   const [showOtherInternships, setShowOtherInternships] = useState(false);
 
-  const paisaProject = OTHER_INTERNSHIPS.find(i => i.role.includes('PAISA')) || OTHER_INTERNSHIPS[0];
-  const remainingInternships = OTHER_INTERNSHIPS.filter(i => !i.role.includes('PAISA'));
+  const pesaProject = OTHER_INTERNSHIPS.find(i => i.role.includes('PESA')) || OTHER_INTERNSHIPS[0];
+  const remainingInternships = OTHER_INTERNSHIPS.filter(i => !i.role.includes('PESA'));
 
   return (
     <section id="experience" className="py-24 bg-[#050505] relative">
@@ -122,8 +122,8 @@ export default function Experience({ onOpenLightbox }) {
 
         </div>
 
-        {/* FEATURED EXECUTIVE ENGAGEMENT: PAISA PROJECT (World Bank & Govt of MP) */}
-        {paisaProject && (
+        {/* FEATURED EXECUTIVE ENGAGEMENT: PESA PROJECT (World Bank & Govt of MP) */}
+        {pesaProject && (
           <div className="mb-14 rounded-2xl bg-gradient-to-br from-[#121212] via-[#0e0e0e] to-[#070707] border-2 border-emerald-500/30 p-6 sm:p-8 relative overflow-hidden shadow-2xl">
             {/* Ambient emerald & crimson glow */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 blur-[100px] pointer-events-none rounded-full" />
@@ -140,16 +140,16 @@ export default function Experience({ onOpenLightbox }) {
                     </span>
                   </div>
                   <h3 className="font-['Syne',sans-serif] text-xl sm:text-2xl font-black text-white">
-                    {paisaProject.role}
+                    {pesaProject.role}
                   </h3>
                   <div className="text-xs sm:text-sm font-mono text-[#a0a0a0]">
-                    {paisaProject.organization}
+                    {pesaProject.organization}
                   </div>
                 </div>
 
                 <div className="text-left sm:text-right">
                   <div className="text-sm sm:text-base font-mono text-emerald-400 font-bold">
-                    {paisaProject.honorarium}
+                    {pesaProject.honorarium}
                   </div>
                   <div className="text-xs font-mono text-[#777777]">
                     2,000+ Students Trained
@@ -159,7 +159,7 @@ export default function Experience({ onOpenLightbox }) {
 
               {/* Responsibilities & Achievements */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 mb-6">
-                {paisaProject.details.map((detail, dIdx) => (
+                {pesaProject.details.map((detail, dIdx) => (
                   <div key={dIdx} className="p-3.5 rounded-xl bg-black/60 border border-white/5 flex items-start gap-3 text-xs sm:text-sm text-[#cccccc]">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 shrink-0"></span>
                     <span>{detail}</span>

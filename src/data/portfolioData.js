@@ -681,3 +681,190 @@ export const JARVIS_NEURAL_NODES = [
     tags: ["IIT Kanpur", "Techkriti '24", "Gold Tier ML", "Gold Tier Python"]
   }
 ];
+
+export const JARVIS_MIND_GAME_CHALLENGES = [
+  {
+    id: "challenge_1",
+    sector: "ACADEMIC EXCELLENCE & MERIT",
+    question: "Which state dignitary felicitated Ansh on stage for maintaining continuous #1 College Rank across 5 semesters?",
+    options: [
+      "Shri Madan Vibhishan Nagargoje, IAS",
+      "Principal of IIT Kanpur",
+      "Chairman of UGC India",
+      "State Governor of Madhya Pradesh"
+    ],
+    correctIndex: 0,
+    intel: "Shri Madan Vibhishan Nagargoje, IAS (Commissioner of Technical Education, Govt. of MP) honored Ansh on stage for securing the continuous #1 Top Rank in college across 5 semesters and AIR 05 in Diploma CSE Common Merit.",
+    xp: 250,
+    badgeUnlocked: "State Merit Champion"
+  },
+  {
+    id: "challenge_2",
+    sector: "WORLD BANK & PESA PMU",
+    question: "How many students did Ansh train under the PESA Project aided by the World Bank & Global Skills Park?",
+    options: [
+      "2,000+ Students across MP",
+      "500 Polytechnic Students",
+      "800 Technical Interns",
+      "3,200 University Scholars"
+    ],
+    correctIndex: 0,
+    intel: "6-Month high-impact engagement (2024) as Management Executive & Procurement Official with the Central Incubation Center at Government Women's Polytechnic College (GWPC), Bhopal (Paid Stipend: ₹1,00,000).",
+    xp: 300,
+    badgeUnlocked: "World Bank Executive"
+  },
+  {
+    id: "challenge_3",
+    sector: "GOVT AGRITECH ECOSYSTEM",
+    question: "Which enterprise portal links farmers, land registries, crop trade, and mandis in coordination with NIC & CRISP?",
+    options: [
+      "e-SETU (esetup.mpkrishi.mp.gov.in)",
+      "KisanVikas Direct",
+      "KrishiMandi AI",
+      "FarmBridge Express"
+    ],
+    correctIndex: 0,
+    intel: "e-Setu is built for the Department of Farmer Welfare & Agriculture Development, Govt. of MP, integrating farmer land registry, crop lifecycle, market logistics, and DNS coordination with NIC & CRISP.",
+    xp: 280,
+    badgeUnlocked: "Govt Systems Architect"
+  },
+  {
+    id: "challenge_4",
+    sector: "ARCHAEOLOGY & HERITAGE",
+    question: "Which proprietary framework powers the digitization, PMU conservation, and virtual tours for MP archaeology sites?",
+    options: [
+      "Archaeology Experience (AX) Framework",
+      "HeritageCloud 3D",
+      "MonuMentis Engine",
+      "VirtualSanchi Suite"
+    ],
+    correctIndex: 0,
+    intel: "Under agreements with Directorate of Archaeology, Archives & Museums, MP and Dr. V.S. Wakankar Archaeological Research Institute, the AX framework powers conservation PMU tracking, site museums, and virtual tours.",
+    xp: 320,
+    badgeUnlocked: "Heritage AX Guardian"
+  },
+  {
+    id: "challenge_5",
+    sector: "AI DOCUMENT INTELLIGENCE",
+    question: "Which system restructures raw scanned PDFs and multi-column tables into token-efficient Markdown for local RAG?",
+    options: [
+      "DOCFORGE Engine",
+      "PyPDF Extractor",
+      "Adobe Scan API",
+      "MarkdownForge Pro"
+    ],
+    correctIndex: 0,
+    intel: "DOCFORGE is engineered with a Python FastAPI core, high-accuracy OCR extraction, table restructuring, and lightweight SQLite metadata for low-latency local RAG retrieval.",
+    xp: 350,
+    badgeUnlocked: "Cognitive AI Specialist"
+  },
+  {
+    id: "challenge_6",
+    sector: "HARDWARE & IOT INNOVATION",
+    question: "What sensor and mechanism powers Ansh's resume project: IoT-Based Smart Dustbin & Automated Waste System?",
+    options: [
+      "Ultrasonic Proximity Sensor + Servo Lid Mechanism",
+      "Infrared Beam + Hydraulic Piston",
+      "PIR Motion Sensor + Stepper Motor",
+      "RFID Sensor + Electromagnetic Solenoid"
+    ],
+    correctIndex: 0,
+    intel: "Engineered with Arduino/ESP8266 microcontrollers and ultrasonic proximity sensing (<30cm) for touchless automated lid opening and container fill threshold alerts.",
+    xp: 260,
+    badgeUnlocked: "Embedded IoT Engineer"
+  }
+];
+
+export const LIFE_TIMELINE_NODES = [
+  {
+    year: "2021 – 2024",
+    title: "Diploma CSE — AIR 05 & 5x Continuous College Topper",
+    institution: "Sardar Vallabh Bhai Polytechnic College, Bhopal",
+    highlight: "Secured AIR 05 in MP Common Merit List (90.05%) and #1 rank across all 5 semesters consecutively.",
+    badge: "AIR 05 Merit"
+  },
+  {
+    year: "2023 – 2024",
+    title: "Elected College President (Highest Student Office)",
+    institution: "Student Council • SVPC Bhopal",
+    highlight: "Elected to the highest office based on sustained academic merit; covered in state press 'Madhya Swadesh'.",
+    badge: "College President"
+  },
+  {
+    year: "2023 – 2024",
+    title: "Dual Gold Tier Certification — IIT Kanpur Techkriti '24",
+    institution: "IIT Kanpur Technocruise",
+    highlight: "Awarded Gold tier certification in Machine Learning and Python Programming, appointed Campus Ambassador.",
+    badge: "IIT Kanpur Gold"
+  },
+  {
+    year: "2024 (6 Months)",
+    title: "Management Executive & Procurement Official — PESA Project",
+    institution: "Dept. of Technical Education, MP (World Bank & Global Skills Park)",
+    highlight: "Trained 2,000+ students across MP; led operational PMU at GWPC Incubation Center (Stipend: ₹1,00,000).",
+    badge: "World Bank PESA"
+  },
+  {
+    year: "2024 – 2027",
+    title: "B.Tech Computer Science Engineering",
+    institution: "Shri G.S. Institute of Technology and Science (SGSITS), Indore",
+    highlight: "92.6% aggregate up to 4th semester, mastering advanced Distributed Systems, Algorithms, and Cloud.",
+    badge: "SGSITS CSE"
+  },
+  {
+    year: "2026 (May – Oct)",
+    title: "Software Development Engineer Intern",
+    institution: "CONORG IT & Solutions",
+    highlight: "Full-stack development, functional/regression testing, and deployment assistance (Stipend: ₹25,000/mo).",
+    badge: "SDE Intern"
+  },
+  {
+    year: "Present",
+    title: "Software Development Engineer (Full-Time)",
+    institution: "CONORG IT & Solutions",
+    highlight: "Leading e-Setu AgriTech, Archaeology AX PMU, and enterprise digital solutions as Full-Time SDE.",
+    badge: "Full-Time SDE"
+  }
+];
+
+export const FONT_THEME_OPTIONS = [
+  {
+    id: "editorial",
+    name: "Editorial Impact (Default)",
+    description: "Bebas Neue Display + Syne Headings + Plus Jakarta Sans",
+    displayClass: "font-['Bebas_Neue',sans-serif]",
+    headingClass: "font-['Syne',sans-serif]",
+    tag: "Poster Luxe"
+  },
+  {
+    id: "cyberpunk",
+    name: "JARVIS Cyberpunk",
+    description: "Orbitron Sci-Fi + Space Grotesk + JetBrains Mono",
+    displayClass: "font-['Orbitron',sans-serif]",
+    headingClass: "font-['Space_Grotesk',sans-serif]",
+    tag: "Sci-Fi HUD"
+  },
+  {
+    id: "modern",
+    name: "Silicon Valley Tech",
+    description: "Outfit Ultra-Clean + Inter + Plus Jakarta Sans",
+    displayClass: "font-['Outfit',sans-serif]",
+    headingClass: "font-['Inter',sans-serif]",
+    tag: "Clean Tech"
+  },
+  {
+    id: "terminal",
+    name: "Hacker Terminal",
+    description: "JetBrains Mono All-Code Monospace Architecture",
+    displayClass: "font-['JetBrains_Mono',monospace]",
+    headingClass: "font-['JetBrains_Mono',monospace]",
+    tag: "Code Matrix"
+  }
+];
+
+export const COLOR_THEME_OPTIONS = [
+  { id: "crimson", name: "Crimson Red", hex: "#D71930", glow: "rgba(215,25,48,0.5)" },
+  { id: "cyan", name: "Cyber Cyan", hex: "#00F0FF", glow: "rgba(0,240,255,0.5)" },
+  { id: "emerald", name: "Matrix Emerald", hex: "#10B981", glow: "rgba(16,185,129,0.5)" },
+  { id: "gold", name: "Imperial Gold", hex: "#F59E0B", glow: "rgba(245,158,11,0.5)" }
+];
