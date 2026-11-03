@@ -140,3 +140,37 @@
   background-size: 200% 200%;
   animation: borderRotate 4s ease infinite;
 }
+
+/* Dynamic Font Switcher Overrides */
+body.font-cyberpunk h1, 
+body.font-cyberpunk h2, 
+body.font-cyberpunk .font-\[\'Bebas_Neue\'\,sans-serif\] {
+  font-family: 'Orbitron', sans-serif !important;
+  letter-spacing: 0.02em !important;
+}
+body.font-cyberpunk h3, 
+body.font-cyberpunk h4, 
+body.font-cyberpunk .font-\[\'Syne\'\,sans-serif\] {
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
+body.font-modern h1, 
+body.font-modern h2, 
+body.font-modern .font-\[\'Bebas_Neue\'\,sans-serif\] {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 900 !important;
+}
+body.font-modern h3, 
+body.font-modern h4, 
+body.font-modern .font-\[\'Syne\'\,sans-serif\] {
+  font-family: 'Inter', sans-serif !important;
+}
+
+body.font-terminal h1, 
+body.font-terminal h2, 
+body.font-terminal h3, 
+body.font-terminal h4,
+body.font-terminal .font-\[\'Bebas_Neue\'\,sans-serif\], 
+body.font-terminal .font-\[\'Syne\'\,sans-serif\] {
+  font-family: 'JetBrains Mono', monospace !important;
+}

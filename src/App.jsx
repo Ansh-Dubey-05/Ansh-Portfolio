@@ -12,6 +12,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import PhotoLightbox from './components/PhotoLightbox';
 import CustomCursor from './components/CustomCursor';
+import ThemeFontCustomizer from './components/ThemeFontCustomizer';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -30,6 +31,9 @@ export default function App() {
       {/* Custom Trailing Glow Cursor for Desktop */}
       <CustomCursor />
 
+      {/* Floating Typography & Theme Preset Customizer */}
+      <ThemeFontCustomizer />
+
       {/* Navigation */}
       <Navbar />
 
@@ -38,7 +42,7 @@ export default function App() {
         {/* Hero Section with Giant SOFTWARE DEVELOPER typography and Ansh Dubey portrait */}
         <Hero onOpenLightbox={handleOpenLightbox} />
 
-        {/* JARVIS Neural Mind: Interactive Cognitive Engineering Map */}
+        {/* JARVIS Neural Mind & Interactive Cognitive Game */}
         <JarvisNeuralMind onOpenLightbox={handleOpenLightbox} />
 
         {/* Selected Projects Showcase (Matching 3-column reference + Deep dive specs) */}
@@ -47,7 +51,7 @@ export default function App() {
           onOpenLightbox={handleOpenLightbox}
         />
 
-        {/* Professional Experience (Career progression: SDE Intern ➔ Full-time SDE at CONORG + PAISA Project) */}
+        {/* Professional Experience (Career progression: SDE Intern ➔ Full-time SDE at CONORG + PESA Project) */}
         <Experience onOpenLightbox={handleOpenLightbox} />
 
         {/* Work Process (Vertical 5-Step timeline + Crimson Quote Card) */}
