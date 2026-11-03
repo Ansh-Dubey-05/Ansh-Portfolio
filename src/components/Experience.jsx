@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { CAREER_PROGRESSION, OTHER_INTERNSHIPS } from '../data/portfolioData';
-import { Briefcase, ArrowRight, ShieldCheck, FileText, ChevronDown, ChevronUp, CheckCircle, Sparkles, Building2 } from 'lucide-react';
+import { Briefcase, ArrowRight, ShieldCheck, FileText, ChevronDown, ChevronUp, CheckCircle, Sparkles, Building2, Globe, Users, Award } from 'lucide-react';
 
-export default function Experience() {
+export default function Experience({ onOpenLightbox }) {
   const [showOtherInternships, setShowOtherInternships] = useState(false);
+
+  const paisaProject = OTHER_INTERNSHIPS.find(i => i.role.includes('PAISA')) || OTHER_INTERNSHIPS[0];
+  const remainingInternships = OTHER_INTERNSHIPS.filter(i => !i.role.includes('PAISA'));
 
   return (
     <section id="experience" className="py-24 bg-[#050505] relative">
@@ -21,12 +24,12 @@ export default function Experience() {
             PROFESSIONAL EXPERIENCE
           </h2>
           <p className="text-xs sm:text-sm font-mono text-[#888888] mt-2 max-w-2xl">
-            Demonstrated career progression from SDE Intern to Full-Time Software Development Engineer at CONORG.
+            Demonstrated career progression from SDE Intern to Full-Time Software Development Engineer at CONORG, alongside high-impact World Bank government initiatives.
           </p>
         </div>
 
         {/* PRIMARY CAREER PROGRESSION: CONORG */}
-        <div className="relative border-l-2 border-[#D71930]/50 ml-3 sm:ml-6 pl-6 sm:pl-10 space-y-12">
+        <div className="relative border-l-2 border-[#D71930]/50 ml-3 sm:ml-6 pl-6 sm:pl-10 space-y-12 mb-16">
           
           {CAREER_PROGRESSION.map((role, idx) => (
             <div key={idx} className="relative group">
@@ -69,7 +72,7 @@ export default function Experience() {
                       {role.period}
                     </div>
                     {role.stipend && (
-                      <div className="text-[11px] font-mono text-emerald-400 mt-0.5">
+                      <div className="text-[11px] font-mono text-emerald-400 mt-0.5 font-semibold">
                         Paid Stipend: {role.stipend}
                       </div>
                     )}
@@ -119,8 +122,67 @@ export default function Experience() {
 
         </div>
 
+        {/* FEATURED EXECUTIVE ENGAGEMENT: PAISA PROJECT (World Bank & Govt of MP) */}
+        {paisaProject && (
+          <div className="mb-14 rounded-2xl bg-gradient-to-br from-[#121212] via-[#0e0e0e] to-[#070707] border-2 border-emerald-500/30 p-6 sm:p-8 relative overflow-hidden shadow-2xl">
+            {/* Ambient emerald & crimson glow */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 blur-[100px] pointer-events-none rounded-full" />
+            
+            <div className="relative z-10">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10 mb-5">
+                <div className="space-y-1">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded text-[10px] font-mono uppercase font-bold tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                      WORLD BANK & GLOBAL SKILLS PARK AIDED
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded text-[10px] font-mono text-[#D71930] font-semibold bg-[#D71930]/10 border border-[#D71930]/30">
+                      6 Months Leadership (2024)
+                    </span>
+                  </div>
+                  <h3 className="font-['Syne',sans-serif] text-xl sm:text-2xl font-black text-white">
+                    {paisaProject.role}
+                  </h3>
+                  <div className="text-xs sm:text-sm font-mono text-[#a0a0a0]">
+                    {paisaProject.organization}
+                  </div>
+                </div>
+
+                <div className="text-left sm:text-right">
+                  <div className="text-sm sm:text-base font-mono text-emerald-400 font-bold">
+                    {paisaProject.honorarium}
+                  </div>
+                  <div className="text-xs font-mono text-[#777777]">
+                    2,000+ Students Trained
+                  </div>
+                </div>
+              </div>
+
+              {/* Responsibilities & Achievements */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 mb-6">
+                {paisaProject.details.map((detail, dIdx) => (
+                  <div key={dIdx} className="p-3.5 rounded-xl bg-black/60 border border-white/5 flex items-start gap-3 text-xs sm:text-sm text-[#cccccc]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 shrink-0"></span>
+                    <span>{detail}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Bottom Tags */}
+              <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-white/10 text-xs font-mono">
+                <div className="flex items-center gap-2 text-white/80">
+                  <Building2 className="w-4 h-4 text-emerald-400" />
+                  <span>Incubation Center: Government Women's Polytechnic College (GWPC), Bhopal</span>
+                </div>
+                <span className="text-emerald-400 font-semibold">
+                  ✓ Verified Government Executive Record
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Career Progression Flow Banner */}
-        <div className="mt-12 p-5 rounded-xl bg-gradient-to-r from-[#D71930]/15 via-[#111111] to-[#0c0c0c] border border-[#D71930]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-5 rounded-xl bg-gradient-to-r from-[#D71930]/15 via-[#111111] to-[#0c0c0c] border border-[#D71930]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-[#D71930] flex items-center justify-center shrink-0 shadow-lg shadow-[#D71930]/40">
               <Sparkles className="w-5 h-5 text-white" />
@@ -149,10 +211,10 @@ export default function Experience() {
               <Building2 className="w-4 h-4 text-[#D71930]" />
               <div>
                 <span className="text-sm font-mono text-white font-semibold">
-                  ADDITIONAL INTERNSHIPS & TECHNICAL EXPERIENCES ({OTHER_INTERNSHIPS.length})
+                  ADDITIONAL ACCREDITED INTERNSHIPS & TRAININGS ({remainingInternships.length})
                 </span>
                 <p className="text-[11px] font-mono text-[#777777]">
-                  Govt. of MP (Stipend ₹1 Lakh), IBM SkillsBuild, Codec Technologies, Next24tech, CRISP
+                  IBM SkillsBuild, Codec Technologies, Next24tech, CRISP (Indo-German Co-operation)
                 </p>
               </div>
             </div>
@@ -165,7 +227,7 @@ export default function Experience() {
 
           {showOtherInternships && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 animate-in fade-in slide-in-from-top-2 duration-300">
-              {OTHER_INTERNSHIPS.map((item, idx) => (
+              {remainingInternships.map((item, idx) => (
                 <div 
                   key={idx}
                   className="p-5 rounded-xl bg-[#0a0a0a] border border-white/10 flex flex-col justify-between hover:border-[#D71930]/40 transition-colors"
@@ -183,12 +245,6 @@ export default function Experience() {
                     <div className="text-xs font-mono text-[#a0a0a0] mb-2 font-medium">
                       {item.organization}
                     </div>
-
-                    {item.honorarium && (
-                      <div className="text-xs font-mono text-emerald-400 font-semibold mb-2">
-                        {item.honorarium}
-                      </div>
-                    )}
 
                     {item.badge && (
                       <div className="text-[10px] font-mono text-amber-300/90 mb-3">
@@ -215,4 +271,3 @@ export default function Experience() {
     </section>
   );
 }
-

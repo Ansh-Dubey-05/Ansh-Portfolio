@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FEATURED_PROJECTS, ADDITIONAL_PROJECTS, PERSONAL_INFO } from '../data/portfolioData';
-import { ArrowUpRight, ExternalLink, Layers, Terminal, Sparkles, Filter, ChevronRight } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, Layers, Terminal, Sparkles, Filter, ChevronRight, Maximize2, Cpu } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
-export default function Projects({ onSelectProject }) {
+export default function Projects({ onSelectProject, onOpenLightbox }) {
   const [selectedFilter, setSelectedFilter] = useState('featured');
 
   const allProjects = [...FEATURED_PROJECTS, ...ADDITIONAL_PROJECTS];
@@ -14,7 +14,9 @@ export default function Projects({ onSelectProject }) {
     ? allProjects
     : selectedFilter === 'ai'
     ? allProjects.filter(p => p.category.includes('ML') || p.category.includes('AI') || p.category.includes('Document AI'))
-    : allProjects.filter(p => p.category.includes('Full-Stack') || p.category.includes('Web'));
+    : selectedFilter === 'iot'
+    ? allProjects.filter(p => p.category.includes('IoT') || p.category.includes('Hardware'))
+    : allProjects.filter(p => p.category.includes('Full-Stack') || p.category.includes('Web') || p.category.includes('Govt'));
 
   return (
     <section id="projects" className="py-24 bg-[#080808] relative border-t border-b border-white/5">
@@ -35,6 +37,9 @@ export default function Projects({ onSelectProject }) {
             <h2 className="font-['Bebas_Neue',sans-serif] text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight uppercase leading-none">
               SELECTED PROJECTS
             </h2>
+            <p className="text-xs sm:text-sm font-mono text-[#888888] mt-2 max-w-2xl">
+              Govt-scale enterprise solutions, AI document intelligence engines, full-stack systems, and IoT microcontrollers.
+            </p>
           </div>
 
           <div className="flex items-center gap-4">
@@ -42,7 +47,7 @@ export default function Projects({ onSelectProject }) {
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-[#a0a0a0] hover:text-white group transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-[#a0a0a0] hover:text-white group transition-colors px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-white/20"
             >
               <GithubIcon className="w-4 h-4 text-[#D71930]" />
               <span>VIEW ALL ON GITHUB</span>
@@ -58,9 +63,10 @@ export default function Projects({ onSelectProject }) {
           </span>
           {[
             { id: 'featured', label: 'Primary Showcase (01 - 03)' },
-            { id: 'all', label: 'All Projects (8)' },
-            { id: 'fullstack', label: 'Full-Stack & Web' },
+            { id: 'all', label: `All Systems (${allProjects.length})` },
+            { id: 'fullstack', label: 'Govt & Full-Stack' },
             { id: 'ai', label: 'AI & Document Intelligence' },
+            { id: 'iot', label: 'IoT & Embedded Hardware' },
           ].map(tab => (
             <button
               key={tab.id}
@@ -84,100 +90,133 @@ export default function Projects({ onSelectProject }) {
               onClick={() => onSelectProject(project)}
               className="group relative flex flex-col justify-between rounded-xl bg-[#0d0d0d] border border-white/10 hover:border-[#D71930]/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#D71930]/15 cursor-pointer overflow-hidden"
             >
-              {/* Preview Graphic / Terminal Mockup Frame */}
-              <div className="relative h-56 sm:h-64 bg-gradient-to-br from-[#161616] to-[#0a0a0a] border-b border-white/10 p-5 overflow-hidden flex flex-col justify-between">
-                
-                {/* Top window controls */}
-                <div className="flex items-center justify-between z-10">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+              {/* Preview Graphic / Image Showcase Frame */}
+              {project.previewImage ? (
+                <div className="relative h-56 sm:h-64 bg-black overflow-hidden group/img border-b border-white/10">
+                  <img
+                    src={project.previewImage}
+                    alt={project.title}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-black/35 to-black/20" />
+                  
+                  {/* Top tags */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10">
+                      <span className="w-2 h-2 rounded-full bg-[#D71930] animate-pulse"></span>
+                      <span className="text-[10px] font-mono text-white uppercase font-bold tracking-wider">
+                        {project.category}
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-mono text-emerald-400 px-2 py-0.5 rounded bg-black/80 border border-emerald-500/30 font-semibold backdrop-blur-md">
+                      VERIFIED CONORG
+                    </span>
                   </div>
-                  <span className="text-[10px] font-mono text-[#777777] uppercase tracking-wider px-2 py-0.5 rounded bg-black/40 border border-white/5">
-                    {project.category}
-                  </span>
+
+                  {/* Bottom hover bar */}
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-white/90 z-10">
+                    <span className="flex items-center gap-1 text-xs">
+                      <Layers className="w-3.5 h-3.5 text-[#D71930]" /> Live Platform
+                    </span>
+                    <span className="text-xs text-[#D71930] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                      Inspect Specs <ChevronRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
                 </div>
-
-                {/* Conceptual Technical Graphic / Illustration in card */}
-                <div className="my-auto py-2 relative z-10">
-                  {project.id === 'mailflows' && (
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-[11px] font-mono text-[#a0a0a0] bg-black/50 p-2 rounded border border-white/5">
-                        <span className="text-[#D71930] font-bold">POST</span>
-                        <span className="text-white/80">/api/campaign/dispatch</span>
-                        <span className="text-emerald-400">200 OK</span>
-                      </div>
-                      <div className="p-2.5 rounded bg-black/70 border border-white/10 font-mono text-[10px] text-[#888888]">
-                        <span className="text-[#D71930]">const</span> mailQueue = <span className="text-amber-400">parseCSV</span>(recipients);<br/>
-                        dispatchBulkCampaign(template, mailQueue);
-                      </div>
+              ) : (
+                <div className="relative h-56 sm:h-64 bg-gradient-to-br from-[#161616] to-[#0a0a0a] border-b border-white/10 p-5 overflow-hidden flex flex-col justify-between">
+                  {/* Top window controls */}
+                  <div className="flex items-center justify-between z-10">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
                     </div>
-                  )}
+                    <span className="text-[10px] font-mono text-[#777777] uppercase tracking-wider px-2 py-0.5 rounded bg-black/40 border border-white/5">
+                      {project.category}
+                    </span>
+                  </div>
 
-                  {project.id === 'docforge' && (
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-[11px] font-mono text-[#a0a0a0] bg-black/50 p-2 rounded border border-white/5">
-                        <span className="text-sky-400 font-bold">OCR ENGINE</span>
-                        <span className="text-white/80">PDF ➔ Markdown Tokenizer</span>
-                        <span className="text-emerald-400">99.4%</span>
+                  {/* Technical Graphic / Code in card */}
+                  <div className="my-auto py-2 relative z-10">
+                    {project.id === 'docforge' && (
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between text-[11px] font-mono text-[#a0a0a0] bg-black/50 p-2 rounded border border-white/5">
+                          <span className="text-sky-400 font-bold">OCR ENGINE</span>
+                          <span className="text-white/80">PDF ➔ Markdown Tokenizer</span>
+                          <span className="text-emerald-400">99.4%</span>
+                        </div>
+                        <div className="p-2.5 rounded bg-black/70 border border-white/10 font-mono text-[10px] text-[#888888]">
+                          <span className="text-sky-400">table_matrix</span> = extract_columns(pdf_stream)<br/>
+                          token_efficient_md = format_for_rag(table_matrix)
+                        </div>
                       </div>
-                      <div className="p-2.5 rounded bg-black/70 border border-white/10 font-mono text-[10px] text-[#888888]">
-                        <span className="text-sky-400">table_matrix</span> = extract_columns(pdf_stream)<br/>
-                        token_efficient_md = format_for_rag(table_matrix)
-                      </div>
-                    </div>
-                  )}
+                    )}
 
-                  {project.id === 'esetu' && (
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-[11px] font-mono text-[#a0a0a0] bg-black/50 p-2 rounded border border-white/5">
-                        <span className="text-emerald-400 font-bold">AGRI LINK</span>
-                        <span className="text-white/80">Farmer ➔ Market Gateway</span>
-                        <span className="text-emerald-400">LIVE</span>
+                    {project.id === 'mailflows' && (
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between text-[11px] font-mono text-[#a0a0a0] bg-black/50 p-2 rounded border border-white/5">
+                          <span className="text-[#D71930] font-bold">POST</span>
+                          <span className="text-white/80">/api/campaign/dispatch</span>
+                          <span className="text-emerald-400">200 OK</span>
+                        </div>
+                        <div className="p-2.5 rounded bg-black/70 border border-white/10 font-mono text-[10px] text-[#888888]">
+                          <span className="text-[#D71930]">const</span> mailQueue = <span className="text-amber-400">parseCSV</span>(recipients);<br/>
+                          dispatchBulkCampaign(template, mailQueue);
+                        </div>
                       </div>
-                      <div className="p-2.5 rounded bg-black/70 border border-white/10 font-mono text-[10px] text-[#888888]">
-                        <span className="text-emerald-400">sync_market_rates</span>(mandi_id, crops)<br/>
-                        generateInspectionCertificate(batch_id)
-                      </div>
-                    </div>
-                  )}
+                    )}
 
-                  {project.id === 'heartguard' && (
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-[11px] font-mono text-[#a0a0a0] bg-black/50 p-2 rounded border border-white/5">
-                        <span className="text-[#D71930] font-bold">ML CLASSIFIER</span>
-                        <span className="text-white/80">Cardiovascular Risk Eval</span>
-                        <span className="text-emerald-400">Scikit</span>
+                    {project.id === 'smartdustbin' && (
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between text-[11px] font-mono text-[#a0a0a0] bg-black/50 p-2 rounded border border-white/5">
+                          <span className="text-amber-400 font-bold">ARDUINO / ESP</span>
+                          <span className="text-white/80">Proximity & Fill Sensor</span>
+                          <span className="text-emerald-400">ACTIVE</span>
+                        </div>
+                        <div className="p-2.5 rounded bg-black/70 border border-white/10 font-mono text-[10px] text-[#888888]">
+                          <span className="text-amber-400">if</span> (distance &lt; 30) servo.write(90);<br/>
+                          check_capacity_threshold(ultrasonic_pin);
+                        </div>
                       </div>
-                      <div className="p-2.5 rounded bg-black/70 border border-white/10 font-mono text-[10px] text-[#888888]">
-                        model = RandomForestClassifier(n_estimators=100)<br/>
-                        accuracy = evaluate_metrics(X_test, y_test)
-                      </div>
-                    </div>
-                  )}
+                    )}
 
-                  {project.id !== 'mailflows' && project.id !== 'docforge' && project.id !== 'esetu' && project.id !== 'heartguard' && (
-                    <div className="p-3 rounded bg-black/60 border border-white/10 font-mono text-[11px] text-[#a0a0a0]">
-                      <div className="text-[#D71930] font-semibold mb-1">// {project.title} Core Architecture</div>
-                      <div className="text-white/70 truncate">{project.features[0]}</div>
-                    </div>
-                  )}
+                    {project.id === 'heartguard' && (
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between text-[11px] font-mono text-[#a0a0a0] bg-black/50 p-2 rounded border border-white/5">
+                          <span className="text-[#D71930] font-bold">ML CLASSIFIER</span>
+                          <span className="text-white/80">Cardiovascular Risk Eval</span>
+                          <span className="text-emerald-400">Scikit</span>
+                        </div>
+                        <div className="p-2.5 rounded bg-black/70 border border-white/10 font-mono text-[10px] text-[#888888]">
+                          model = RandomForestClassifier(n_estimators=100)<br/>
+                          accuracy = evaluate_metrics(X_test, y_test)
+                        </div>
+                      </div>
+                    )}
+
+                    {project.id !== 'docforge' && project.id !== 'mailflows' && project.id !== 'smartdustbin' && project.id !== 'heartguard' && (
+                      <div className="p-3 rounded bg-black/60 border border-white/10 font-mono text-[11px] text-[#a0a0a0]">
+                        <div className="text-[#D71930] font-semibold mb-1">// {project.title} Core Architecture</div>
+                        <div className="text-white/70 truncate">{project.features[0]}</div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Subtitle tag overlay */}
+                  <div className="flex items-center justify-between text-[11px] font-mono text-[#888888] z-10">
+                    <span className="flex items-center gap-1 text-white/70">
+                      <Terminal className="w-3 h-3 text-[#D71930]" /> Architecture Ready
+                    </span>
+                    <span className="text-[10px] text-[#D71930] group-hover:underline flex items-center gap-1">
+                      Inspect Specs <ChevronRight className="w-3 h-3" />
+                    </span>
+                  </div>
+
+                  {/* Ambient red hover glow */}
+                  <div className="absolute inset-0 bg-[#D71930]/0 group-hover:bg-[#D71930]/5 transition-colors duration-300 pointer-events-none" />
                 </div>
-
-                {/* Subtitle tag overlay */}
-                <div className="flex items-center justify-between text-[11px] font-mono text-[#888888] z-10">
-                  <span className="flex items-center gap-1 text-white/70">
-                    <Terminal className="w-3 h-3 text-[#D71930]" /> Architecture Ready
-                  </span>
-                  <span className="text-[10px] text-[#D71930] group-hover:underline flex items-center gap-1">
-                    Inspect Specs <ChevronRight className="w-3 h-3" />
-                  </span>
-                </div>
-
-                {/* Ambient red hover glow */}
-                <div className="absolute inset-0 bg-[#D71930]/0 group-hover:bg-[#D71930]/5 transition-colors duration-300 pointer-events-none" />
-              </div>
+              )}
 
               {/* Bottom Card Content matching reference typography */}
               <div className="p-5 flex flex-col justify-between flex-1">

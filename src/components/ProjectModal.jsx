@@ -1,8 +1,8 @@
 import React from 'react';
-import { X, ExternalLink, Layers, CheckCircle2, Terminal, Code2, Cpu } from 'lucide-react';
+import { X, ExternalLink, Layers, CheckCircle2, Terminal, Code2, Cpu, Maximize2 } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
-export default function ProjectModal({ project, onClose }) {
+export default function ProjectModal({ project, onClose, onOpenLightbox }) {
   if (!project) return null;
 
   return (
@@ -41,6 +41,27 @@ export default function ProjectModal({ project, onClose }) {
             <X className="w-5 h-5" />
           </button>
         </div>
+
+        {/* Project Preview Image if available */}
+        {project.previewImage && (
+          <div className="relative rounded-xl overflow-hidden border border-white/15 bg-black max-h-72 group">
+            <img 
+              src={project.previewImage} 
+              alt={project.title} 
+              className="w-full h-auto object-cover object-top"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent pointer-events-none" />
+            {onOpenLightbox && (
+              <button
+                onClick={() => onOpenLightbox(project.previewImage, `${project.title} — ${project.tagline}`)}
+                className="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-black/80 hover:bg-[#D71930] border border-white/20 text-white text-xs font-mono transition-colors flex items-center gap-1.5 backdrop-blur-md"
+              >
+                <Maximize2 className="w-3.5 h-3.5" />
+                <span>View Full Resolution</span>
+              </button>
+            )}
+          </div>
+        )}
 
         {/* Overview */}
         <div className="space-y-2">

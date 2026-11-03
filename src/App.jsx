@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import JarvisNeuralMind from './components/JarvisNeuralMind';
 import Projects from './components/Projects';
 import ProjectModal from './components/ProjectModal';
 import Experience from './components/Experience';
@@ -21,7 +22,7 @@ export default function App() {
   };
 
   const handleCloseLightbox = () => {
-    setLightboxData({ isOpen: false, src: '', caption: '' });
+    setLightboxData({ isOpen: false, src, caption });
   };
 
   return (
@@ -34,14 +35,20 @@ export default function App() {
 
       {/* Main Content */}
       <main>
-        {/* Hero Section with Giant PORTFOLIO typography and Ansh Dubey portrait */}
+        {/* Hero Section with Giant SOFTWARE DEVELOPER typography and Ansh Dubey portrait */}
         <Hero onOpenLightbox={handleOpenLightbox} />
 
-        {/* Selected Projects Showcase (Matching 3-column reference + Deep dive specs) */}
-        <Projects onSelectProject={(project) => setSelectedProject(project)} />
+        {/* JARVIS Neural Mind: Interactive Cognitive Engineering Map */}
+        <JarvisNeuralMind onOpenLightbox={handleOpenLightbox} />
 
-        {/* Professional Experience (Career progression: SDE Intern ➔ Full-time SDE at CONORG) */}
-        <Experience />
+        {/* Selected Projects Showcase (Matching 3-column reference + Deep dive specs) */}
+        <Projects 
+          onSelectProject={(project) => setSelectedProject(project)} 
+          onOpenLightbox={handleOpenLightbox}
+        />
+
+        {/* Professional Experience (Career progression: SDE Intern ➔ Full-time SDE at CONORG + PAISA Project) */}
+        <Experience onOpenLightbox={handleOpenLightbox} />
 
         {/* Work Process (Vertical 5-Step timeline + Crimson Quote Card) */}
         <WorkProcess />
@@ -49,7 +56,7 @@ export default function App() {
         {/* Education & Technical Skills (Split layout matching reference + Verified Certificates) */}
         <EducationSkills onOpenLightbox={handleOpenLightbox} />
 
-        {/* College President & Institutional Leadership Spotlight (SVPC Diploma CSE featuring 5th photo) */}
+        {/* College President & Institutional Leadership Spotlight (SVPC Diploma CSE + IAS Madan Vibhishan Nagargoje Award) */}
         <PresidentFeature onOpenLightbox={handleOpenLightbox} />
 
         {/* Contact & 3D Laptop Workspace Showcase */}
@@ -64,6 +71,7 @@ export default function App() {
         <ProjectModal
           project={selectedProject}
           onClose={() => setSelectedProject(null)}
+          onOpenLightbox={handleOpenLightbox}
         />
       )}
 

@@ -3,7 +3,7 @@ import { PRESIDENT_LEADERSHIP } from '../data/portfolioData';
 import { Award, ShieldCheck, Users, Crown, Mic, Flag, Sparkles, Maximize2, Newspaper, Trophy } from 'lucide-react';
 
 export default function PresidentFeature({ onOpenLightbox }) {
-  const [activeTab, setActiveTab] = useState('plaque');
+  const [activeTab, setActiveTab] = useState('stage');
 
   const selectedItem = PRESIDENT_LEADERSHIP.gallery.find(g => g.id === activeTab) || PRESIDENT_LEADERSHIP.gallery[0];
 
@@ -12,7 +12,7 @@ export default function PresidentFeature({ onOpenLightbox }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="mb-14 pb-4 border-b border-white/10">
+        <div className="mb-10 pb-4 border-b border-white/10">
           <div className="flex items-center gap-2 mb-2">
             <span className="w-2 h-2 rounded-full bg-[#D71930]"></span>
             <span className="text-xs font-mono text-[#D71930] uppercase tracking-widest font-semibold">
@@ -23,8 +23,41 @@ export default function PresidentFeature({ onOpenLightbox }) {
             COLLEGE PRESIDENT & AWARDS
           </h2>
           <p className="text-xs sm:text-sm font-mono text-[#888888] mt-2 max-w-3xl">
-            Elected to the highest student office as College President at Sardar Vallabh Bhai Polytechnic College, Bhopal during Diploma in Computer Science & Engineering (2021–2024), verified by official memento plaque and state press media.
+            Elected to the highest student office as College President at Sardar Vallabh Bhai Polytechnic College, Bhopal during Diploma in Computer Science & Engineering (2021–2024), verified by official memento plaque, IAS stage felicitation, and state press media.
           </p>
+        </div>
+
+        {/* HIGHLIGHT BANNER: IAS Madan Vibhishan Nagargoje Award */}
+        <div className="mb-10 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-[#D71930]/20 via-[#141414] to-[#0c0c0c] border border-[#D71930]/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-xl">
+          <div className="flex items-start sm:items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-[#D71930] flex items-center justify-center shrink-0 shadow-lg shadow-[#D71930]/40">
+              <Trophy className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#D71930] font-bold">
+                  OFFICIAL STATE FELICITATION
+                </span>
+                <span className="text-[10px] font-mono text-emerald-400 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 font-semibold">
+                  5x Consecutive Semesters #1 Rank
+                </span>
+              </div>
+              <h3 className="font-['Syne',sans-serif] text-lg sm:text-xl font-black text-white mt-1">
+                Felicitated on Stage by Shri Madan Vibhishan Nagargoje, IAS
+              </h3>
+              <p className="text-xs sm:text-sm font-mono text-[#b0b0b0] mt-0.5">
+                Commissioner of Technical Education, Govt. of Madhya Pradesh — Awarded to Ansh Dubey for maintaining continuous #1 College Rank across 5 semesters and AIR 05 in Diploma CSE Common Merit.
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => onOpenLightbox('/assets/ansh_award_stage.jpg', 'Stage Felicitation by Shri Madan Vibhishan Nagargoje, IAS (Commissioner of Technical Education, MP) — 5 Semesters Continuous College Topper')}
+            className="px-4 py-2.5 rounded-xl bg-[#D71930] hover:bg-[#b81428] text-white text-xs font-mono font-bold tracking-wider transition-all shrink-0 flex items-center gap-2 shadow-lg shadow-[#D71930]/20"
+          >
+            <Maximize2 className="w-4 h-4" />
+            <span>INSPECT STAGE PHOTO</span>
+          </button>
         </div>
 
         {/* 2-Column Showcase */}
@@ -62,7 +95,7 @@ export default function PresidentFeature({ onOpenLightbox }) {
               </button>
 
               {/* Bottom Caption Box */}
-              <div className="absolute bottom-4 left-4 right-4 z-20 p-4 rounded-xl bg-black/80 border border-white/10 backdrop-blur-md">
+              <div className="absolute bottom-4 left-4 right-4 z-20 p-4 rounded-xl bg-black/85 border border-white/10 backdrop-blur-md">
                 <div className="flex items-center justify-between mb-1">
                   <h3 className="text-sm sm:text-base font-['Syne',sans-serif] text-white font-bold">
                     {selectedItem.title}
@@ -85,7 +118,7 @@ export default function PresidentFeature({ onOpenLightbox }) {
                   onClick={() => setActiveTab(item.id)}
                   className={`p-1.5 rounded-xl border text-left transition-all flex flex-col items-center gap-1.5 ${
                     activeTab === item.id
-                      ? 'border-[#D71930] bg-[#D71930]/10 shadow-lg shadow-[#D71930]/20'
+                      ? 'border-[#D71930] bg-[#D71930]/15 shadow-lg shadow-[#D71930]/25'
                       : 'border-white/10 bg-[#0c0c0c] hover:border-white/20'
                   }`}
                 >
@@ -122,7 +155,7 @@ export default function PresidentFeature({ onOpenLightbox }) {
                     Presidential Tenure & Honor
                   </h3>
                 </div>
-                <span className="text-xs font-mono text-amber-300 px-2 py-0.5 rounded bg-amber-400/10 border border-amber-400/30 font-bold">
+                <span className="text-xs font-mono text-amber-300 px-2.5 py-0.5 rounded bg-amber-400/10 border border-amber-400/30 font-bold">
                   2023 - 2024
                 </span>
               </div>
@@ -151,7 +184,7 @@ export default function PresidentFeature({ onOpenLightbox }) {
 
             {/* Newspaper Press Highlights Box */}
             <div 
-              onClick={() => onOpenLightbox('/assets/ansh_newspaper_president.jpg', 'Madhya Swadesh Press Coverage — Oath Ceremony')}
+              onClick={() => onOpenLightbox('/assets/ansh_newspaper_president.jpg', 'Madhya Swadesh Press Coverage — Student Council Oath Ceremony')}
               className="p-5 rounded-2xl bg-gradient-to-br from-[#121212] to-[#0c0c0c] border border-white/10 hover:border-[#D71930]/40 transition-all cursor-pointer group"
             >
               <div className="flex items-start justify-between gap-3 mb-2">

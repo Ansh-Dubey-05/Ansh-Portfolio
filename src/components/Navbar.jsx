@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { Menu, X, Download, Sparkles, ExternalLink, ArrowRight } from 'lucide-react';
+import { Menu, X, Download, Sparkles, ExternalLink, ArrowRight, Cpu } from 'lucide-react';
 import { WhatsappIcon } from './Icons';
 import confetti from 'canvas-confetti';
 
@@ -13,7 +13,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      const sections = ['hero', 'experience', 'projects', 'process', 'skills', 'education', 'leadership', 'contact'];
+      const sections = ['hero', 'neural-mind', 'projects', 'experience', 'process', 'skills-education', 'leadership', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -43,10 +43,11 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: 'Work', href: '#projects' },
+    { label: 'JARVIS Mind', href: '#neural-mind', isJarvis: true },
+    { label: 'Projects', href: '#projects' },
     { label: 'Experience', href: '#experience' },
     { label: 'Process', href: '#process' },
-    { label: 'Skills & Education', href: '#skills-education' },
+    { label: 'Skills & Edu', href: '#skills-education' },
     { label: 'Leadership', href: '#leadership' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -83,13 +84,16 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-mono tracking-wider transition-all duration-200 ${
+              className={`px-3 py-1 rounded-full text-xs font-mono tracking-wider transition-all duration-200 flex items-center gap-1.5 ${
                 activeSection === link.href.replace('#', '')
                   ? 'bg-[#D71930] text-white font-semibold shadow-md shadow-[#D71930]/30'
+                  : link.isJarvis
+                  ? 'text-[#D71930] hover:text-white hover:bg-[#D71930]/15'
                   : 'text-[#a0a0a0] hover:text-white hover:bg-white/5'
               }`}
             >
-              {link.label}
+              {link.isJarvis && <Cpu className="w-3 h-3 text-[#D71930]" />}
+              <span>{link.label}</span>
             </a>
           ))}
         </nav>
@@ -159,9 +163,10 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2.5 rounded-md text-sm font-mono tracking-wider text-[#d0d0d0] hover:text-white hover:bg-[#D71930]/20 hover:border-l-2 hover:border-[#D71930] transition-all"
+                className="px-4 py-2.5 rounded-md text-sm font-mono tracking-wider text-[#d0d0d0] hover:text-white hover:bg-[#D71930]/20 hover:border-l-2 hover:border-[#D71930] transition-all flex items-center justify-between"
               >
-                {link.label}
+                <span>{link.label}</span>
+                {link.isJarvis && <span className="text-[10px] font-mono text-[#D71930] px-1.5 py-0.5 rounded bg-[#D71930]/10 border border-[#D71930]/20">HUD</span>}
               </a>
             ))}
             
