@@ -18,11 +18,11 @@ export default function App() {
   const [lightboxData, setLightboxData] = useState({ isOpen: false, src: '', caption: '' });
 
   const handleOpenLightbox = (src, caption) => {
-    setLightboxData({ isOpen: true, src, caption });
+    setLightboxData({ isOpen: true, src: src || '', caption: caption || '' });
   };
 
   const handleCloseLightbox = () => {
-    setLightboxData({ isOpen: false, src, caption });
+    setLightboxData({ isOpen: false, src: '', caption: '' });
   };
 
   return (
