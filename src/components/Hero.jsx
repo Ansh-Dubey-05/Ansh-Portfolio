@@ -1,24 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO, VERIFIED_STATS } from '../data/portfolioData';
-import { ArrowDownRight, Sparkles, Download, ArrowRight, ShieldCheck, Mail, Award, Check, Crown, Terminal, Maximize2, Image as ImageIcon } from 'lucide-react';
+import { ArrowDownRight, Sparkles, Download, ArrowRight, ShieldCheck, Mail, Award, Check, Crown, Terminal, Maximize2 } from 'lucide-react';
 import { WhatsappIcon } from './Icons';
 import confetti from 'canvas-confetti';
 
 const PORTRAITS = [
   { 
-    id: 'cutout', 
-    label: 'Dark Cutout (Black Shirt)', 
-    src: '/assets/ansh_hero_transparent.png', 
-    raw: '/assets/ansh_portrait_couch.jpg',
-    isCutout: true,
-    tag: 'SDE @ CONORG'
-  },
-  { 
     id: 'couch', 
-    label: 'Full Studio Photo', 
+    label: 'Studio Photo (Couch)', 
     src: '/assets/ansh_hero_full_visible.jpg', 
     raw: '/assets/ansh_portrait_couch.jpg',
-    isCutout: false,
     tag: 'SDE @ CONORG'
   },
   { 
@@ -26,7 +17,6 @@ const PORTRAITS = [
     label: 'Formal Suit (SVPC)', 
     src: '/assets/ansh_award.jpg', 
     raw: '/assets/ansh_award.jpg',
-    isCutout: false,
     tag: 'Academic Distinction'
   },
   { 
@@ -34,8 +24,14 @@ const PORTRAITS = [
     label: 'Casual Lounge', 
     src: '/assets/ansh_portrait_lounge.jpg', 
     raw: '/assets/ansh_portrait_lounge.jpg',
-    isCutout: false,
     tag: 'Software Engineer'
+  },
+  { 
+    id: 'cutout', 
+    label: 'Editorial Cutout', 
+    src: '/assets/ansh_hero_transparent.png', 
+    raw: '/assets/ansh_portrait_couch.jpg',
+    tag: 'Editorial'
   },
 ];
 
@@ -71,19 +67,21 @@ export default function Hero({ onOpenLightbox }) {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[900px] h-[400px] md:h-[500px] bg-[#D71930]/15 blur-[140px] pointer-events-none rounded-full animate-pulse" />
       <div className="absolute top-2/3 right-10 w-[350px] h-[350px] bg-[#D71930]/10 blur-[110px] pointer-events-none rounded-full" />
 
-      {/* Top Banner Row matching reference */}
-      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 mb-6 lg:mb-2 flex items-center justify-between text-[11px] sm:text-xs font-mono text-[#888888] uppercase tracking-widest border-b border-white/5 pb-3">
+      {/* Top Banner Row matching reference & aligned to grid */}
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 mb-4 lg:mb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] sm:text-xs font-mono text-[#888888] uppercase tracking-wider border-b border-white/5 pb-2.5">
         <div className="flex items-center gap-2">
-          <span className="text-[#D71930] font-semibold">SOFTWARE DEVELOPMENT ENGINEER</span>
-          <span className="hidden sm:inline text-white/20">/</span>
-          <span className="hidden sm:inline">FULL-STACK SYSTEMS BUILDER</span>
+          <span className="text-[#D71930] font-bold">FULL-STACK SYSTEMS BUILDER</span>
+          <span className="text-white/20">•</span>
+          <span className="text-[#a0a0a0]">PROBLEM SOLVER</span>
+          <span className="hidden md:inline text-white/20">•</span>
+          <span className="hidden md:inline text-[#777777]">SDE @ CONORG</span>
         </div>
         <div className="flex items-center gap-3 text-white/90">
           <a 
             href={PERSONAL_INFO.whatsapp} 
             target="_blank" 
             rel="noreferrer"
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[11px] hover:bg-emerald-500/25 transition-all shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[11px] hover:bg-emerald-500/25 transition-all shadow-sm"
           >
             <WhatsappIcon className="w-3.5 h-3.5" />
             <span>9755319058</span>
@@ -99,23 +97,18 @@ export default function Hero({ onOpenLightbox }) {
       {/* Main Composition Container */}
       <div className="relative max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center">
         
-        {/* GIANT CONDENSED BACKDROP TYPOGRAPHY: "SOFTWARE DEVELOPER" - Positioned High & Distinct (No Overlap) */}
+        {/* GIANT CONDENSED BACKDROP TYPOGRAPHY: "SOFTWARE DEVELOPER" - Single Line, Perfectly Fitted Across Margin to Margin */}
         <div 
           aria-hidden="true" 
-          className="absolute inset-x-0 top-0 sm:top-2 lg:top-4 text-center select-none pointer-events-none z-0 overflow-hidden px-2 sm:px-4"
+          className="absolute inset-x-0 top-1 sm:top-2 lg:top-4 text-center select-none pointer-events-none z-0 overflow-hidden px-4 sm:px-6 w-full flex items-center justify-center"
         >
-          <div className="flex flex-col lg:flex-row items-center justify-center font-['Bebas_Neue',sans-serif] text-[14vw] sm:text-[12.5vw] lg:text-[9.8vw] text-[#D71930] leading-[0.85] lg:leading-none tracking-tight font-black select-none animate-sde-glow">
-            <span className="block drop-shadow-[0_0_35px_rgba(215,25,48,0.5)]">
-              SOFTWARE
-            </span>
-            <span className="block lg:ml-6 drop-shadow-[0_0_35px_rgba(215,25,48,0.5)]">
-              DEVELOPER
-            </span>
+          <div className="font-['Bebas_Neue',sans-serif] text-[6.5vw] sm:text-[6.2vw] md:text-[5.8vw] lg:text-[5.5vw] xl:text-[5.2vw] text-[#D71930] leading-none tracking-tight sm:tracking-normal font-black select-none animate-sde-glow whitespace-nowrap drop-shadow-[0_0_35px_rgba(215,25,48,0.5)]">
+            SOFTWARE DEVELOPER
           </div>
         </div>
 
         {/* 3-Column Hero Grid: Left Content / Center-Right Portrait / Right Stats - Positioned Comfortably Below Backdrop (Zero Overlap) */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center pt-24 sm:pt-32 lg:pt-36 xl:pt-40">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center pt-16 sm:pt-20 lg:pt-24 xl:pt-28">
           
           {/* LEFT COLUMN: Identity, Animated Title, Actions (Col 1-5) */}
           <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1">
@@ -215,7 +208,7 @@ export default function Hero({ onOpenLightbox }) {
             </div>
           </div>
 
-          {/* CENTER-RIGHT: Ansh Dubey's FULLY VISIBLE & ANIMATED PORTRAIT (Col 6-9) */}
+          {/* CENTER-RIGHT: Ansh Dubey's FULL NATURAL STUDIO PORTRAIT (Col 6-9) */}
           <div className="lg:col-span-4 flex justify-center items-center order-1 lg:order-2 relative mt-4 lg:mt-0">
             
             {/* Glowing Backlight Aura */}
@@ -230,32 +223,20 @@ export default function Hero({ onOpenLightbox }) {
                 <span className="font-bold">Full-Time SDE</span>
               </div>
 
-              {/* Portrait Frame Container: Seamless for Cutout, Bordered for Photos */}
-              <div 
-                className={`relative z-10 overflow-hidden transition-all duration-500 w-full flex items-center justify-center ${
-                  currentPortrait.isCutout
-                    ? 'rounded-2xl bg-gradient-to-t from-black via-transparent to-transparent drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]'
-                    : 'rounded-2xl border-2 border-white/15 hover:border-[#D71930]/80 bg-[#0d0d0d] shadow-[0_20px_50px_rgba(0,0,0,0.9)]'
-                }`}
-              >
-                {/* Photo or Cutout */}
+              {/* Portrait Frame Container: Natural Photo Background Preserved Cleanly */}
+              <div className="relative z-10 overflow-hidden rounded-2xl border-2 border-white/15 hover:border-[#D71930]/80 bg-[#0d0d0d] shadow-[0_20px_50px_rgba(0,0,0,0.9)] transition-all duration-500 w-full flex items-center justify-center">
+                {/* Full studio photograph with natural room and couch intact */}
                 <img
                   src={currentPortrait.src}
                   alt="Ansh Dubey — Software Development Engineer"
-                  className={`w-full h-auto object-contain max-h-[540px] filter contrast-105 brightness-105 transition-transform duration-750 group-hover:scale-[1.02] ${
-                    currentPortrait.isCutout ? 'drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]' : ''
-                  }`}
+                  className="w-full h-auto object-cover max-h-[540px] filter contrast-105 brightness-105 transition-transform duration-750 group-hover:scale-[1.02]"
                 />
 
                 {/* Corner Crosshairs for Framed Photos */}
-                {!currentPortrait.isCutout && (
-                  <>
-                    <div className="absolute top-2.5 left-2.5 w-4 h-4 border-t-2 border-l-2 border-[#D71930] pointer-events-none" />
-                    <div className="absolute top-2.5 right-2.5 w-4 h-4 border-t-2 border-r-2 border-[#D71930] pointer-events-none" />
-                    <div className="absolute bottom-2.5 left-2.5 w-4 h-4 border-b-2 border-l-2 border-[#D71930] pointer-events-none" />
-                    <div className="absolute bottom-2.5 right-2.5 w-4 h-4 border-b-2 border-r-2 border-[#D71930] pointer-events-none" />
-                  </>
-                )}
+                <div className="absolute top-2.5 left-2.5 w-4 h-4 border-t-2 border-l-2 border-[#D71930] pointer-events-none" />
+                <div className="absolute top-2.5 right-2.5 w-4 h-4 border-t-2 border-r-2 border-[#D71930] pointer-events-none" />
+                <div className="absolute bottom-2.5 left-2.5 w-4 h-4 border-b-2 border-l-2 border-[#D71930] pointer-events-none" />
+                <div className="absolute bottom-2.5 right-2.5 w-4 h-4 border-b-2 border-r-2 border-[#D71930] pointer-events-none" />
 
                 {/* Quick Expand Button on Image */}
                 <button
@@ -268,8 +249,8 @@ export default function Hero({ onOpenLightbox }) {
                 </button>
               </div>
 
-              {/* Centered Institutional Leadership Badge (Below Photo, Centered & Clean) */}
-              <div className="mt-3 flex items-center justify-center z-20">
+              {/* Centered Institutional Leadership Badge (Below Photo, Centered & Clean, No Overlap) */}
+              <div className="mt-3.5 flex items-center justify-center z-20">
                 <a
                   href="#leadership"
                   className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0c0c0c]/95 hover:bg-[#181818] border border-amber-500/50 hover:border-amber-400 text-amber-300 hover:text-white text-xs font-mono shadow-xl backdrop-blur-md transition-all group/badge"
